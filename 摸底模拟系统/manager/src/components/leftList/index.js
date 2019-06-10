@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import style from './leftList.css';
-import { Menu, Icon, Button } from 'antd';
+import { Menu, Icon } from 'antd';
 const { SubMenu }  = Menu;
 export default class LeftList extends Component {
     constructor(){

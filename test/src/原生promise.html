@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function PromiseM(){
+            this.status='pending';
+            this.msg='';
+            var process=arguments[0];
+            var _this=this;
+            process(function(){
+                _this.status='resolve';
+                _this.msg=arguments[0];
+               
+            },function(){
+                _this.status='reject';     
+                _this.msg=arguments[0];           
+            });
+            return this;
+        }
+        PromiseM.prototype.then=function(){
+            if(this.status=='resolve'){
+                arguments[0](this.msg);
+               
+            }
+            if(this.status=='reject'&&arguments[1]){
+                arguments[1](this.msg);
+            }
+        }
+        function loadImg(src){
+            return new PromiseM(function(resolve, reject){
+                let img = new Image();
+                img.src = src;
+                resolve(img)
+               
+        })
+    }
+    var url = 'https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1560667201&di=d2ccb49f200d045f2628143df8a9db48&imgtype=jpg&src=http%3A%2F%2Femoji.cdn.bcebos.com%2Fyunying%2F20190521.jpg';
+    loadImg(url).then(function(src){
+        document.body.appendChild(src);
+    },
+    function(err){
+        console.log(err)
+    })
+    
+    </script>
+</body>
+</html>

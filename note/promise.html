@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+     *  Promise, async/await, generator
+        Promise的三种状态：pennding, fulfilled, rejected
+        Promise的两个生成promise的静态方法：resolve，reject
+        Promise的两个控制时序的方法：all，race
+     */
+    function loadImg(src){
+        return new Promise((resolve, reject)=>{
+            let img = new Image();
+            img.src = src;
+            img.onload = function(){
+                resolve(img);
+            }
+            img.onerror = function(e){
+                reject(e);
+            }
+        })
+    }
+    var url = 'https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1560667201&di=d2ccb49f200d045f2628143df8a9db48&imgtype=jpg&src=http%3A%2F%2Femoji.cdn.bcebos.com%2Fyunying%2F20190521.jpg';
+    // loadImg(url).then(res=>{
+    // //     document.body.appendChild(res);
+    // // return 10000;
+    // //     //  return Promise.resolve(10000)
+    // //      return Promise.reject(new Error('我是一个错误'));
+    // }, err=>{
+    //     console.log('err...', err);
+    // }).then(res1=>{
+    //     console.log('res1...', res1);
+    // }, err1=>{
+    //     console.log('err1...', err1);
+    // }).then(res2=>{
+    // }, err2=>{
+        
+    // }).then(res3=>{
+    // }, err3=>{
+        
+    // }).catch(()=>{
+    // }).finally(()=>{
+    //     console.log('finally')
+    // })
+    async function load(){
+        try{
+            let img = await loadImg(url);
+           
+            document.body.appendChild(img);
+        }catch(e){
+        }
+    }
+    load()
+    </script>
+</body>
+</html>

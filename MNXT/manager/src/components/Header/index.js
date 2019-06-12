@@ -31,7 +31,7 @@ class Header extends Component {
                 </div>
                 <div className={style.header_user}>
                     <Dropdown overlay={menu}>
-                        <a className="ant-dropdown-link" href="#">
+                        <a className="ant-dropdown-link" href="">
                             <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" className={style.Avatar}/>
                             <span className={style.user_name}>kkkkk</span>
                         </a>

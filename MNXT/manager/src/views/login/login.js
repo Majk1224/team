@@ -1,15 +1,24 @@
-import React,{useState,useEffect} from 'react';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import React,{useEffect} from 'react';
+import { Form, Icon, Input, Button, Checkbox,message } from 'antd';
 import { connect } from 'dva';
 import styles from './login.scss';
 function Login(props){
+
       // 获取login
-  let {login,user} = props;
-const [state]=useState(user)
-console.log(props)
+let {login,user} = props;
+
   useEffect(()=>{
-    
-  }, []);
+    console.log(user)
+    if(user.code===1){
+        //1. 提示登录成功
+        message.success('登陆成功');
+        //2. 存储cookie
+        //3. 跳转页面
+        props.history.replace("/home");
+    }else if(user.code===0){
+        message.error(user.msg);
+    }
+  }, [user]);
      // 处理表单提交
   let handleSubmit = e => {
     e.preventDefault();
@@ -23,12 +32,6 @@ console.log(props)
         })
       }
     });
-    if(state.isUser){
-        if(state.isUser.code==1){
-            
-            // props.history.push("/home")
-        }
-    }
     
   };
     // 表单校验
@@ -74,7 +77,14 @@ console.log(props)
             </div>
         </div>)
 }
+// props的类型检查
+Login.propTypes = {
 
+}
+// props的默认值
+Login.defaultProps = {
+
+}
 const mapStateToProps=state=>{
    
     return state
@@ -91,4 +101,4 @@ const mapDispatchToProps=dispatch=>{
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Form.create()(Login));
+export default connect(mapStateToProps,mapDispatchToProps)(Form.create({name: 'normal_login'})(Login));

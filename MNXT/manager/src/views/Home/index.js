@@ -4,7 +4,9 @@ import Header from '../../components/Header';
 import LeftList from '../../components/leftList';
 import RightList from '../../components/rightList';
 class Home extends Component {
+    
     render () {
+        console.log(this.props)
         return (
             <div className={style.Home}>
                 <Header></Header>

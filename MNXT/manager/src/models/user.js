@@ -1,17 +1,20 @@
 import {login} from '../services'
 import { setToken,getToken } from "../utils/user";
 import {routerRedux} from 'dva/router';
+
 export default {
     // 命名空间
     namespace: 'user',
     // 模块内部的状态
     state: {
-      isUser:{}
+      isUser:{},
+      UserInfo:""
     },
     subscriptions: {
       setup({ dispatch, history }) { 
          // eslint-disable-line
          return history.listen(({pathname})=>{
+           
             if(pathname.indexOf("/login")===-1){
              // 不去登陆页面做token检测
               if (!getToken()){
@@ -42,6 +45,7 @@ export default {
             }
             yield put({type:"save",action:data})
           },
+          
     },
   
     // 同步操作
@@ -51,6 +55,7 @@ export default {
         return state.isUser=action
         // return { ...state, ...action };
       },
+      
     },
   
   };

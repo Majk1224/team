@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from './node_modules/react'
 
-export default class ClassGrad extends Component {
+export default class UserGuan extends Component {
     render() {
         return (
             <div>

@@ -3,12 +3,11 @@ import { Form, Icon, Input, Button, Checkbox,message } from 'antd';
 import { connect } from 'dva';
 import styles from './login.scss';
 function Login(props){
-
       // 获取login
 let {login,user} = props;
 
   useEffect(()=>{
-    console.log(user)
+   
     if(user.code===1){
         //1. 提示登录成功
         message.success('登陆成功');
@@ -91,6 +90,7 @@ const mapStateToProps=state=>{
 }
 const mapDispatchToProps=dispatch=>{
     return {
+        //获取登录接口
         login(payload){
             dispatch({
                 type: 'user/login',
@@ -98,6 +98,15 @@ const mapDispatchToProps=dispatch=>{
             })
             
         }
+        //获取用户接口
+        // user(payload){
+        //     dispatch({
+        //         type: 'user/user',
+        //         payload
+        //     })
+        // }
+       
+
     }
 }
 

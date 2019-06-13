@@ -1,11 +1,6 @@
-import React, { Component } from './node_modules/react'
-
-export default class Questins extends Component {
-    render() {
-        return (
-            <div>
-                试卷管理
-            </div>
-        )
-    }
+import QuestionsAdd from './QuestionsAdd';
+import QuestionsType from './QuestionsType';
+import QuestionsView from './QuestionsView';
+export {
+    QuestionsAdd,QuestionsType,QuestionsView
 }

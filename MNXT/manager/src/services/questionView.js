@@ -31,3 +31,10 @@ export function Getleixing(){
         method:"GET"
     })
 }
+//条件查询借口
+export function ConditionT(){
+    return request({
+        url:"/exam/questions/condition",
+        method:"GET"
+    })
+}

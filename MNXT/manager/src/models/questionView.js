@@ -1,4 +1,4 @@
-import {getExamClass , GetAllCourse,getshitic,Getleixing } from '../services'
+import {getExamClass , GetAllCourse,getshitic,Getleixing ,ConditionT} from '../services'
 
 
 export default {
@@ -41,7 +41,7 @@ export default {
                 
           *getallshiti({payload},{call,put}){
             let data=yield call(getshitic)
-             console.log(data)
+            //  console.log(data)
             yield put({
               type:"getshiti",
               payload:data.data
@@ -50,13 +50,17 @@ export default {
 
           *getleixing({payload},{call,put}){
             let data=yield call(Getleixing)
-             console.log(data)
+            //  console.log(data)
             yield put({
               type:"getleixinga",
               payload:data.data
             })
           },
-
+          //查询完的数据
+          *condition({payload},{call,put}){
+            let data=yield call(ConditionT,payload)
+            console.log(data)
+          }
      
     }, 
   

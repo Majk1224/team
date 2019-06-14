@@ -204,7 +204,7 @@ const mapDispatchToProps=dispatch=>{
                 type:"exam/getQuestionsType"
             })
         },
-         //获取当前用户信息
+         //获取当前用户ID
          userInfo(){
             dispatch({
                 type: 'exam/userInfo',
